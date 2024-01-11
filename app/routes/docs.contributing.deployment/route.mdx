@@ -5,7 +5,7 @@ handle:
 
 import { Link } from '@remix-run/react'
 
-import deploymentScreenshot from './screenshot.png'
+import deploymentScreenshot from 'correct/path/screenshot.png'
 
 # Deployment
 
@@ -78,7 +78,7 @@ To approve and trigger a deployment to testing or production, follow these steps
 The deployment should take about 5 minutes.
 
 <img
-  src={deploymentScreenshot}
+  src={deploymentScreenshot || 'placeholder.png'}
   alt="Screen shot of deployment review in GitHub Actions"
   width="2410"
   height="1880"
