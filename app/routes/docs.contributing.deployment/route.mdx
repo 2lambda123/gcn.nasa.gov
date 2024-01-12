@@ -5,9 +5,16 @@ handle:
 
 import { Link } from '@remix-run/react'
 
-import deploymentScreenshot from './screenshot.png'
+import deploymentScreenshot from 'correct/path/screenshot.png'
 
 # Deployment
+
+## Troubleshooting Steps
+
+If you encounter issues during the deployment process, follow these troubleshooting steps:
+1. Verify that the correct AWS credentials are configured.
+2. Check that the environment variables are correctly set.
+3. Ensure that the correct AWS region is specified.
 
 This web site is deployed **in the cloud** on [Amazon Web Services (AWS)](https://aws.amazon.com) in order resist outages due to local network conditions or distasters.
 
@@ -17,7 +24,19 @@ The site's architecture within AWS is entirely **[serverless](https://en.wikiped
 
 We provision all AWS resources using **[infrastructure as code](https://en.wikipedia.org/wiki/Infrastructure_as_code)** so that the configuration of cloud services is automated and under version control. We use the [Architect](https://arc.codes/) serverless framework to model, generate, and orchestrate the AWS resources.
 
-We perform code and infrastructure changes automatially using **[continuous deployment](https://en.wikipedia.org/wiki/Continuous_deployment)** on [GitHub Actions](https://github.com/features/actions) (see our [deployment workflow](https://github.com/nasa-gcn/gcn.nasa.gov/blob/main/.github/workflows/deploy.yml)).
+We perform code and infrastructure changes automatically using **[continuous deployment](https://en.wikipedia.org/wiki/Continuous_deployment)** on [GitHub Actions](https://github.com/features/actions) (see our [deployment workflow](https://github.com/nasa-gcn/gcn.nasa.gov/blob/main/.github/workflows/deploy.yml)).
+
+## Common Deployment Errors and Resolutions
+
+Here are some common deployment errors and their resolutions:
+1. **Error**: AWS credentials not found.
+   - **Resolution**: Ensure that the AWS credentials are correctly configured in the GitHub repository secrets.
+
+2. **Error**: Invalid AWS region specified.
+   - **Resolution**: Verify that the correct AWS region is specified in the deployment configuration.
+
+3. **Error**: Environment variables not set.
+   - **Resolution**: Confirm that all required environment variables are correctly set in the deployment workflow.
 
 ## Stages
 
@@ -65,11 +84,18 @@ There are three full deployments of GCN. Each **deployment stage** is in a separ
   </tbody>
 </table>
 
+## To View Error Logs
+
+To view the error logs in the GitHub Actions run, follow these steps:
+1. Navigate to the [GitHub Actions page](https://github.com/nasa-gcn/gcn.nasa.gov/actions/workflows/deploy.yml).
+2. Select the desired workflow run.
+3. Click on the `Display Error Logs` step to view the error logs.
+
 ## To deploy
 
 To approve and trigger a deployment to testing or production, follow these steps.
 
-1. Navigate to the [Deploy to AWS workflow](https://github.com/nasa-gcn/gcn.nasa.gov/actions/workflows/deploy.yml).
+1. Navigate to the [GitHub Actions page](https://github.com/nasa-gcn/gcn.nasa.gov/actions/workflows/deploy.yml).
 2. Select the desired workflow run.
 3. Tap the `Review deployments` button.
 4. Check the stages that you want to deploy.
@@ -78,7 +104,7 @@ To approve and trigger a deployment to testing or production, follow these steps
 The deployment should take about 5 minutes.
 
 <img
-  src={deploymentScreenshot}
+  src={deploymentScreenshot || 'placeholder.png'}
   alt="Screen shot of deployment review in GitHub Actions"
   width="2410"
   height="1880"
