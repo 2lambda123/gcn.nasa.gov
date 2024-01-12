@@ -27,7 +27,7 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '14.x'
       - name: NPM Install
         run: npm ci
       - name: Build
@@ -37,5 +37,7 @@ jobs:
         with:
           role-to-assume: ${{ secrets.AWS_IAM_ROLE }}
           aws-region: us-east-1
+      - name: Display Error Logs
+        run: echo 'Error logs: <insert_error_logs_variable>'
       - name: Deploy
         run: npm run deploy
